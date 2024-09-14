@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items List</title>
+</head>
+<body>
+    <h1>Items List</h1>
+
+    <script>
+        var a = [
+            {
+                name: "new brand",
+                age: 24,
+                img: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+                price: "$20",
+                size: "M",
+                quality: "High",
+                cotton: "100%"
+            },
+            {
+                name: "jockit",
+                age: 20,
+                img: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+                price: "$25",
+                size: "L",
+                quality: "Premium",
+                cotton: "80%"
+            }
+        ];
+
+        var table = document.createElement("table");
+
+        for (var i = 0; i < a.length; i++) {
+            (function(i) {
+                var tr = document.createElement("tr");
+
+                var td1 = document.createElement("td");
+                td1.innerHTML = a[i]["name"];
+
+                var td2 = document.createElement("td");
+                td2.innerHTML = a[i]["age"];
+
+                var td4 = document.createElement("td");
+                var img = document.createElement("img");
+                img.src = a[i]["img"];  // Set image source here
+                img.style.width = "100px";  // Set image width
+                img.style.height = "100px";  // Set image height
+                td4.append(img);
+
+                var td3 = document.createElement("td");
+                var btn = document.createElement("button");
+                btn.innerText = "See More";
+                btn.addEventListener("click", function () {
+                    localStorage.setItem("single", JSON.stringify(a[i]));
+                    window.location.assign("seen.html");
+                });
+                td3.append(btn);
+
+                tr.append(td1, td2, td4, td3);
+
+                table.append(tr);
+            })(i); 
+        }
+
+        document.body.append(table);
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Details</title>
+</head>
+<body>
+    <h1>Item Details</h1>
+
+    <div id="content"></div>
+
+    <script>
+        var singleItem = JSON.parse(localStorage.getItem("single"));
+
+        if (singleItem) {
+            var name = document.createElement("h2");
+            name.innerHTML = "Name: " + singleItem.name;
+
+            var age = document.createElement("p");
+            age.innerHTML = "Age: " + singleItem.age;
+
+            var price = document.createElement("p");
+            price.innerHTML = "Price: " + singleItem.price;
+
+            var size = document.createElement("p");
+            size.innerHTML = "Size: " + singleItem.size;
+
+            var quality = document.createElement("p");
+            quality.innerHTML = "Quality: " + singleItem.quality;
+
+            var cotton = document.createElement("p");
+            cotton.innerHTML = "Cotton: " + singleItem.cotton;
+
+            var img = document.createElement("img");
+            img.src = singleItem.img;
+            img.style.width = "200px";
+            img.style.height = "200px";
+
+            var contentDiv = document.getElementById("content");
+            contentDiv.append(name, age, price, size, quality, cotton, img);
+        } else {
+            document.body.innerHTML = "No data found! Please go back and try again.";
+        }
+    </script>
+</body>
+</html>
